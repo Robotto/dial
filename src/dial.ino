@@ -25,7 +25,7 @@ void loop()
 
 while(digitalRead(dialEnablePin)==HIGH) RXLED0; //wait for start of dial
 
-while(digitalRead(dialEnablePin)==LOW)
+while(digitalRead(dialEnablePin)==LOW) //dial start - count ticks from here.
 	{
 		RXLED1;
 
@@ -34,7 +34,7 @@ while(digitalRead(dialEnablePin)==LOW)
 				ticks++;
 				tickArmed=false;
 				TXLED1;
-				delay(50);
+				delay(50); //debounce
 			}
 
 		else if(digitalRead(dialTickPin)==LOW) //falling edge
